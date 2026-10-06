@@ -1,26 +1,217 @@
 @import "tailwindcss";
 
+/* =========================================================
+   APNI DUKAAN DESIGN SYSTEM
+========================================================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --yellow: #f8cb46;
+  --yellow-dark: #efb82f;
+
+  --green: #48a92b;
+  --green-dark: #2f7d32;
+
+  --black: #1f1f1f;
+  --white: #ffffff;
+
+  --gray-50: #fafafa;
+  --gray-100: #f8f8f8;
+  --gray-200: #eeeeee;
+  --gray-300: #dddddd;
+  --gray-400: #999999;
+  --gray-500: #777777;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+  overflow-x: hidden;
+  width: 100%;
+
+  font-family:
+    var(--font-inter),
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  touch-action: manipulation;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+}
+
+::selection {
+  background: var(--yellow);
+  color: #111111;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #aaaaaa;
+}
+
+/* =========================================================
+   HORIZONTAL SCROLL
+========================================================= */
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+
+/* =========================================================
+   BUTTON PRESS & TRANSITIONS
+========================================================= */
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================================================
+   ANIMATION KEYFRAMES FOR MODALS & DRAWERS
+========================================================= */
+
+@keyframes apnidukaan-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes apnidukaan-modalEnter {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes apnidukaan-sheetUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes apnidukaan-drawerRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes apnidukaan-dropdownDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim-fade-in {
+  animation: apnidukaan-fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-modal {
+  animation: apnidukaan-modalEnter 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-bottom-sheet {
+  animation: apnidukaan-sheetUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-drawer-right {
+  animation: apnidukaan-drawerRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-dropdown {
+  animation: apnidukaan-dropdownDown 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* =========================================================
+   PREFERS REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
